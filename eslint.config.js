@@ -1,6 +1,7 @@
 const tsParser = require("@typescript-eslint/parser");
 const tsPlugin = require("@typescript-eslint/eslint-plugin");
 const prettierPlugin = require("eslint-plugin-prettier");
+const unusedImportsPlugin = require("eslint-plugin-unused-imports");
 
 module.exports = [
   {
@@ -18,11 +19,22 @@ module.exports = [
     plugins: {
       "@typescript-eslint": tsPlugin,
       prettier: prettierPlugin,
+      "unused-imports": unusedImportsPlugin,
     },
     rules: {
       ...tsPlugin.configs.recommended.rules,
-      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "prettier/prettier": ["error", { semi: false }],
+      "@typescript-eslint/no-unused-vars": "off",
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+        "error",
+        {
+          vars: "all",
+          varsIgnorePattern: "^_",
+          args: "after-used",
+          argsIgnorePattern: "^_",
+        },
+      ],
     },
   },
 ];
