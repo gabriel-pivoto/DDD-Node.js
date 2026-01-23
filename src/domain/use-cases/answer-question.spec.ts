@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
-import { Answer } from '../entities/answer'
-import { AnswersRepository } from '../repositories/answers-repository'
-import { AnswerQuestionUseCase } from './answer-question'
+import { Answer } from '@/domain/entities/answer'
+import { AnswersRepository } from '@/domain/repositories/answers-repository'
+import { AnswerQuestionUseCase } from '@/domain/use-cases/answer-question'
 
 class InMemoryAnswersRepository implements AnswersRepository {
   public items: Answer[] = []
