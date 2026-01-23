@@ -16,9 +16,9 @@ test("create an answer", async () => {
   const answerQuestion = new AnswerQuestionUseCase(answersRepository)
 
   const answer = await answerQuestion.execute({
-    questionId: "1",
-    instructorId: "1",
     content: "Nova resposta",
+    instructorId: "1",
+    questionId: "1",
   })
 
   expect(answer.content).toEqual("Nova resposta")

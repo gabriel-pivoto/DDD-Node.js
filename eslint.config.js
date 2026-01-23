@@ -2,6 +2,8 @@ const tsParser = require("@typescript-eslint/parser");
 const tsPlugin = require("@typescript-eslint/eslint-plugin");
 const prettierPlugin = require("eslint-plugin-prettier");
 const unusedImportsPlugin = require("eslint-plugin-unused-imports");
+const sortDestructureKeysPlugin = require("eslint-plugin-sort-destructure-keys");
+const sortKeysFixPlugin = require("eslint-plugin-sort-keys-fix");
 
 module.exports = [
   {
@@ -20,6 +22,8 @@ module.exports = [
       "@typescript-eslint": tsPlugin,
       prettier: prettierPlugin,
       "unused-imports": unusedImportsPlugin,
+      "sort-destructure-keys": sortDestructureKeysPlugin,
+      "sort-keys-fix": sortKeysFixPlugin,
     },
     rules: {
       ...tsPlugin.configs.recommended.rules,
@@ -35,6 +39,8 @@ module.exports = [
           argsIgnorePattern: "^_",
         },
       ],
+      "sort-destructure-keys/sort-destructure-keys": "error",
+      "sort-keys-fix/sort-keys-fix": ["error", "asc", { caseSensitive: true }],
     },
   },
 ];
