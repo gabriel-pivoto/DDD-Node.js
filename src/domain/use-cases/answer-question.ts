@@ -8,17 +8,17 @@ interface AnswerQuestionUseCaseRequest {
 }
 export class AnswerQuestionUseCase {
 
-    constructor(private answersRepository: AnswersRepository) {}
+  constructor(private answersRepository: AnswersRepository) {}
 
-    async execute({instructorId, questionId, content}: AnswerQuestionUseCaseRequest){
-        const answer = new Answer({
-            content, 
-            authorId: instructorId, 
-            questionId
-        })
+  async execute({instructorId, questionId, content}: AnswerQuestionUseCaseRequest){
+    const answer = new Answer({
+      content, 
+      authorId: instructorId, 
+      questionId
+    })
 
-        await this.answersRepository.create(answer);
+    await this.answersRepository.create(answer);
 
-        return answer;
-    }
+    return answer;
+  }
 }

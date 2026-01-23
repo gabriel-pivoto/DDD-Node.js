@@ -20,6 +20,7 @@ module.exports = [
     rules: {
       ...tsPlugin.configs.recommended.rules,
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      indent: ["error", 2, { SwitchCase: 1 }],
     },
   },
 ];
