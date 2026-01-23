@@ -27,7 +27,7 @@ module.exports = [
     },
     rules: {
       ...tsPlugin.configs.recommended.rules,
-      "prettier/prettier": ["error", { semi: false }],
+      "prettier/prettier": ["error", { semi: false, singleQuote: true }],
       "@typescript-eslint/no-unused-vars": "off",
       "unused-imports/no-unused-imports": "error",
       "unused-imports/no-unused-vars": [

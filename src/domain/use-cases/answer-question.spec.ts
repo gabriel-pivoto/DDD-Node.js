@@ -1,7 +1,7 @@
-import { expect, test } from "vitest"
-import { Answer } from "../entities/answer"
-import { AnswersRepository } from "../repositories/answers-repository"
-import { AnswerQuestionUseCase } from "./answer-question"
+import { expect, test } from 'vitest'
+import { Answer } from '../entities/answer'
+import { AnswersRepository } from '../repositories/answers-repository'
+import { AnswerQuestionUseCase } from './answer-question'
 
 class InMemoryAnswersRepository implements AnswersRepository {
   public items: Answer[] = []
@@ -11,16 +11,16 @@ class InMemoryAnswersRepository implements AnswersRepository {
   }
 }
 
-test("create an answer", async () => {
+test('create an answer', async () => {
   const answersRepository = new InMemoryAnswersRepository()
   const answerQuestion = new AnswerQuestionUseCase(answersRepository)
 
   const answer = await answerQuestion.execute({
-    content: "Nova resposta",
-    instructorId: "1",
-    questionId: "1",
+    content: 'Nova resposta',
+    instructorId: '1',
+    questionId: '1',
   })
 
-  expect(answer.content).toEqual("Nova resposta")
+  expect(answer.content).toEqual('Nova resposta')
   expect(answersRepository.items[0]).toEqual(answer)
 })
