@@ -1,4 +1,4 @@
-import { Answer } from '@/domain/entities/answer'
+import { Answer } from '@/domain/forum/enterprise/entities/answer'
 import { AnswersRepository } from '@/domain/forum/application/repositories/answers-repository'
 import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
 
