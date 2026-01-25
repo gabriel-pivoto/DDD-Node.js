@@ -1,6 +1,6 @@
 export class Slug {
   public value: string
-  constructor(value: string) {
+  private constructor(value: string) {
     this.value = value
   }
   /**
@@ -20,5 +20,8 @@ export class Slug {
       .replace(/--+/g, '-')
       .replace(/-$/g, '')
     return new Slug(slugText)
+  }
+  static create(value: string) {
+    return new Slug(value)
   }
 }
