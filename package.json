@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/gabriel-pivoto/DDD-Node.js#readme",
   "devDependencies": {
+    "@faker-js/faker": "^10.2.0",
     "@types/node": "^25.0.10",
     "@typescript-eslint/eslint-plugin": "^8.53.1",
     "@typescript-eslint/parser": "^8.53.1",
