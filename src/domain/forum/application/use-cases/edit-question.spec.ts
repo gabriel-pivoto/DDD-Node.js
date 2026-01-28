@@ -1,4 +1,4 @@
-import { EditQuestionUseCase } from './edit-question'
+import { EditQuestionUseCase } from '@/domain/forum/application/use-cases/edit-question'
 import { InMemoryQuestionsRepository } from '@/test/repositories/in-memory-questions-repository'
 import { makeQuestion } from '@/test/factories/make-question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
@@ -45,13 +45,13 @@ describe('Edit Question', () => {
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
-    expect(() => {
-      return sut.execute({
+    await expect(
+      sut.execute({
         authorId: 'author-2',
         content: 'Conteúdo teste',
         questionId: newQuestion.id.toValue(),
         title: 'Pergunta teste',
-      })
-    }).rejects.toBeInstanceOf(Error)
+      }),
+    ).rejects.toBeInstanceOf(Error)
   })
 })
