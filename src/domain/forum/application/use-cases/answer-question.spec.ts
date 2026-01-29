@@ -1,4 +1,4 @@
-import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
+﻿import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
 import { InMemoryAnswersRepository } from '@/test/repositories/in-memory-answers-repository'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
@@ -18,6 +18,10 @@ describe('Create Answer', () => {
     })
 
     expect(answer.id).toBeTruthy()
-    expect(inMemoryAnswersRepository.items[0].id).toEqual(answer.id)
+    expect(inMemoryAnswersRepository.items).toHaveLength(1)
+
+    const createdAnswer = inMemoryAnswersRepository.items[0]!
+
+    expect(createdAnswer.id).toEqual(answer.id)
   })
 })

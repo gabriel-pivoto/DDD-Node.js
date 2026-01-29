@@ -34,11 +34,11 @@ describe('Delete Question Comment', () => {
 
     await inMemoryQuestionCommentsRepository.create(questionComment)
 
-    expect(() => {
-      return sut.execute({
+    await expect(
+      sut.execute({
         authorId: 'author-2',
         questionCommentId: questionComment.id.toString(),
-      })
-    }).rejects.toBeInstanceOf(Error)
+      }),
+    ).rejects.toBeInstanceOf(Error)
   })
 })
