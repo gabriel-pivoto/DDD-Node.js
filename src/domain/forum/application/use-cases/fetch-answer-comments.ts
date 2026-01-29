@@ -14,8 +14,8 @@ export class FetchAnswerCommentsUseCase {
   constructor(private answerCommentsRepository: AnswerCommentsRepository) {}
 
   async execute({
-    page,
     answerId,
+    page,
   }: FetchAnswerCommentsUseCaseRequest): Promise<FetchAnswerCommentsUseCaseResponse> {
     const answerComments =
       await this.answerCommentsRepository.findManyByAnswerId(answerId, {

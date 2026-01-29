@@ -8,8 +8,7 @@ let sut: FetchAnswerCommentsUseCase
 
 describe('Fetch Answer Comments', () => {
   beforeEach(() => {
-    inMemoryAnswerCommentsRepository =
-      new InMemoryAnswerCommentsRepository()
+    inMemoryAnswerCommentsRepository = new InMemoryAnswerCommentsRepository()
     sut = new FetchAnswerCommentsUseCase(inMemoryAnswerCommentsRepository)
   })
 
@@ -33,8 +32,8 @@ describe('Fetch Answer Comments', () => {
     )
 
     const { answerComments } = await sut.execute({
-      page: 1,
       answerId: 'answer-1',
+      page: 1,
     })
 
     expect(answerComments).toHaveLength(3)
@@ -50,8 +49,8 @@ describe('Fetch Answer Comments', () => {
     }
 
     const { answerComments } = await sut.execute({
-      page: 2,
       answerId: 'answer-1',
+      page: 2,
     })
 
     expect(answerComments).toHaveLength(2)
