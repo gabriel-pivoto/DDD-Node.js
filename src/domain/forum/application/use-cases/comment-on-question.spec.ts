@@ -1,4 +1,4 @@
-import { InMemoryQuestionsRepository } from '@/test/repositories/in-memory-questions-repository'
+﻿import { InMemoryQuestionsRepository } from '@/test/repositories/in-memory-questions-repository'
 import { makeQuestion } from '@/test/factories/make-question'
 import { InMemoryQuestionCommentsRepository } from '@/test/repositories/in-memory-question-comments-repository'
 import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment-on-question'
@@ -30,8 +30,11 @@ describe('Comment on Question', () => {
       questionId: question.id.toString(),
     })
 
-    expect(inMemoryQuestionCommentsRepository.items[0].content).toEqual(
-      'Comentário teste',
-    )
+    expect(inMemoryQuestionCommentsRepository.items).toHaveLength(1)
+
+    const comment = inMemoryQuestionCommentsRepository.items[0]
+
+    expect(comment).toBeDefined()
+    expect(comment!.content).toEqual('Comentário teste')
   })
 })
