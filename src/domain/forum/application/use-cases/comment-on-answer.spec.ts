@@ -23,11 +23,17 @@ describe('Comment on Answer', () => {
 
     await inMemoryAnswersRepository.create(answer)
 
-    await sut.execute({
+    const result = await sut.execute({
       answerId: answer.id.toString(),
       authorId: answer.authorId.toString(),
       content: 'Comentário teste',
     })
+
+    if (result.value instanceof Error) {
+      throw result.value
+    }
+
+    const { answerComment } = result.value
 
     expect(inMemoryAnswerCommentsRepository.items).toHaveLength(1)
 
@@ -35,5 +41,6 @@ describe('Comment on Answer', () => {
 
     expect(comment).toBeDefined()
     expect(comment!.content).toEqual('Comentário teste')
+    expect(answerComment.content).toEqual('Comentário teste')
   })
 })

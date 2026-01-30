@@ -11,11 +11,13 @@ describe('Create Answer', () => {
   })
 
   it('should be able to create a answer', async () => {
-    const { answer } = await sut.execute({
+    const result = await sut.execute({
       content: 'Conteúdo da resposta',
       instructorId: '1',
       questionId: '1',
     })
+
+    const { answer } = result.value
 
     expect(answer.id).toBeTruthy()
     expect(inMemoryAnswersRepository.items).toHaveLength(1)
